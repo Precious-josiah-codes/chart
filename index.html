@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart</title>
+  </head>
+  <body>
+    <!-- start canvas for holding the canvas object, that displays the map -->
+    <div
+      style="
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <canvas id="myChart" style="width: 100%; max-width: 700px"></canvas>
+    </div>
+    <!-- end canvas for holding the canvas object, that displays the map -->
+
+    <!-- start cdn for chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- end cdn for chart.js -->
+
+    <script>
+      // getting the canvas element from the DOM
+      const ctx = document.getElementById("myChart");
+
+      //   initializing the data for sales tracking
+      const data = [
+        {
+          Month: "January",
+          SalesAmount: 5000,
+        },
+        {
+          Month: "February",
+          SalesAmount: 7000,
+        },
+        {
+          Month: "March",
+          SalesAmount: 5500,
+        },
+        {
+          Month: "April",
+          SalesAmount: 9000,
+        },
+        {
+          Month: "May",
+          SalesAmount: 6500,
+        },
+        {
+          Month: "June",
+          SalesAmount: 8000,
+        },
+        {
+          Month: "July",
+          SalesAmount: 7500,
+        },
+        {
+          Month: "August",
+          SalesAmount: 6000,
+        },
+        {
+          Month: "September",
+          SalesAmount: 8500,
+        },
+        {
+          Month: "October",
+          SalesAmount: 9500,
+        },
+        {
+          Month: "November",
+          SalesAmount: 7000,
+        },
+        {
+          Month: "December",
+          SalesAmount: 8500,
+        },
+      ];
+
+      //   creating an instance for the chart object
+      const myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: data.map((item) => item.Month),
+          datasets: [
+            {
+              label: "Sales Tracking",
+              data: data.map((item) => item.SalesAmount),
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
